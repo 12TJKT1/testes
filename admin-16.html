@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Admin | XII TJKT 1 SMKN 1 Pekanbaru</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html">XII TJKT 1</a>
+  <nav>
+<a href="index.html">Beranda</a>
+  </nav>
+</header>
+
+<main class="isi adm">
+  <h1>Ruang admin</h1>
+
+  <!-- ========== LOGIN ========== -->
+  <section class="adm-kartu adm-sempit" id="panelMasuk">
+    <h2>Masuk</h2>
+    <p class="adm-ket">Halaman ini hanya untuk admin kelas.</p>
+    <form id="formMasuk">
+      <div class="adm-field">
+        <label for="adminEmail">Email</label>
+        <input type="email" id="adminEmail" autocomplete="username" required>
+      </div>
+      <div class="adm-field">
+        <label for="adminSandi">Password</label>
+        <input type="password" id="adminSandi" autocomplete="current-password" required>
+      </div>
+      <button class="tombol" type="submit" id="tombolMasuk">Masuk</button>
+      <p class="status" id="statusMasuk" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <!-- ========== PANEL ADMIN ========== -->
+  <div id="panelAdmin" hidden>
+    <div class="adm-baris adm-akun">
+      <p>Masuk sebagai <strong id="emailAdmin"></strong></p>
+      <button class="tombol tipis" type="button" id="tombolKeluar">Keluar</button>
+    </div>
+
+    <div class="adm-tab" role="tablist" aria-label="Bagian yang diedit">
+      <button type="button" role="tab" id="tabBtnPrestasi" data-tab="Prestasi" aria-selected="true">Prestasi</button>
+      <button type="button" role="tab" id="tabBtnFoto" data-tab="Foto" aria-selected="false">Foto Family</button>
+      <button type="button" role="tab" id="tabBtnRandom" data-tab="Random" aria-selected="false">Foto Random</button>
+    </div>
+
+    <!-- ----- PRESTASI ----- -->
+    <section id="tabPrestasi" role="tabpanel" aria-labelledby="tabBtnPrestasi">
+      <div class="adm-baris">
+        <h2>Prestasi</h2>
+        <button class="tombol" type="button" id="tambahPrestasi">Tambah prestasi</button>
+      </div>
+      <p class="status" id="statusPrestasi" role="status" aria-live="polite"></p>
+
+      <ul class="adm-daftar" id="daftarAdmin"></ul>
+
+      <div class="adm-kartu adm-kosong" id="kosongPrestasi" hidden>
+        <p>Belum ada prestasi di database. Impor tiga prestasi yang sekarang tampil di halaman Prestasi, lalu edit dari sini.</p>
+        <button class="tombol tipis" type="button" id="imporPrestasi">Impor prestasi yang ada</button>
+      </div>
+
+      <form class="adm-kartu" id="formPrestasi" hidden>
+        <h3 id="judulForm">Tambah prestasi</h3>
+
+        <div class="adm-field">
+          <label for="fJudul">Nama prestasi</label>
+          <input type="text" id="fJudul" maxlength="120" placeholder="Misal: Juara 1 Lomba LKS Tingkat Kota" required>
+        </div>
+
+        <div class="adm-field">
+          <label for="fKet">Keterangan</label>
+          <textarea id="fKet" rows="3" maxlength="500" placeholder="Penyelenggara, tanggal, atau cerita singkat lomba"></textarea>
+        </div>
+
+        <div class="adm-field">
+          <label for="fFoto">Foto prestasi</label>
+          <input type="file" id="fFoto" accept="image/jpeg,image/png,image/webp,image/heic,image/heif,.heic,.heif">
+          <div class="adm-pratinjau" id="pratinjauPrestasi" hidden>
+            <img id="gambarPratinjau" alt="Pratinjau foto prestasi">
+          </div>
+          <label class="adm-centang" id="barisHapusFoto" hidden>
+            <input type="checkbox" id="fHapusFoto"> Hapus foto yang sekarang
+          </label>
+        </div>
+
+        <div class="adm-field">
+          <label for="fLabel">Judul daftar nama</label>
+          <input type="text" id="fLabel" list="saranLabel" maxlength="60" value="Yang berhasil">
+          <datalist id="saranLabel">
+            <option value="Yang berhasil"></option>
+            <option value="Yang mengikuti lomba"></option>
+            <option value="Anggota tim"></option>
+          </datalist>
+        </div>
+
+        <fieldset class="adm-field">
+          <legend>Siswa yang ikut</legend>
+          <p class="adm-ket">Isi nomor absen (1 sampai 34) kalau ingin nama bisa diklik ke profil dan memakai fotonya. Kosongkan kalau tidak perlu.</p>
+          <ul class="adm-peserta-daftar" id="listPeserta"></ul>
+          <button class="tombol tipis" type="button" id="tambahPeserta">Tambah siswa</button>
+        </fieldset>
+
+        <div class="adm-baris adm-rata-kiri">
+          <button class="tombol" type="submit" id="simpanPrestasi">Simpan prestasi</button>
+          <button class="tombol tipis" type="button" id="batalPrestasi">Batal</button>
+        </div>
+        <p class="status" id="statusForm" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <!-- ----- FOTO FAMILY ----- -->
+    <section id="tabFoto" role="tabpanel" aria-labelledby="tabBtnFoto" hidden>
+      <h2>Foto album Family</h2>
+
+      <form class="adm-kartu" id="formFoto">
+        <h3>Upload foto</h3>
+        <div class="adm-field">
+          <label for="fotoBerkas">Pilih foto (boleh banyak)</label>
+          <input type="file" id="fotoBerkas" accept="image/jpeg,image/png,image/webp,image/heic,image/heif,.heic,.heif" multiple>
+        </div>
+        <div class="adm-field">
+          <label for="fotoCaption">Keterangan untuk semua foto ini (boleh dikosongkan)</label>
+          <input type="text" id="fotoCaption" maxlength="140" placeholder="Misal: foto keluarga kelas saat perpisahan">
+        </div>
+        <button class="tombol" type="submit" id="tombolUnggah">Upload foto</button>
+        <div class="adm-bar" id="barFoto" aria-hidden="true"><div></div></div>
+        <p class="status" id="statusUnggah" role="status" aria-live="polite"></p>
+      </form>
+
+      <h3 class="adm-sub">Foto yang sudah ada</h3>
+      <p class="status" id="statusFoto" role="status" aria-live="polite"></p>
+      <ul class="adm-foto" id="galeriAdmin"></ul>
+      <div class="adm-lagi" id="lagiFoto" hidden>
+        <button class="tombol tipis" type="button" id="muatFoto">Muat lebih banyak</button>
+      </div>
+    </section>
+
+    <!-- ----- FOTO RANDOM (hapus) ----- -->
+    <section id="tabRandom" role="tabpanel" aria-labelledby="tabBtnRandom" hidden>
+      <h2>Foto album Random</h2>
+      <p class="adm-ket">Pilih album, lalu upload foto baru atau hapus foto yang tidak pantas.</p>
+
+      <div class="adm-tab adm-album" id="pilihRandom" role="group" aria-label="Pilih album Random"></div>
+      <p class="status" id="statusRandom" role="status" aria-live="polite"></p>
+
+      <form class="adm-kartu adm-sempit" id="loginRandom" hidden>
+        <h3>Masuk ke album ini</h3>
+        <p class="adm-ket">Setiap album Random punya akun admin sendiri di Supabase. Masukkan password admin untuk album ini.</p>
+        <div class="adm-field">
+          <label for="sandiRandom">Password</label>
+          <input type="password" id="sandiRandom" autocomplete="current-password" required>
+        </div>
+        <button class="tombol" type="submit" id="tombolMasukRandom">Masuk</button>
+      </form>
+
+      <div id="areaRandom" hidden>
+        <form class="adm-kartu" id="formRandom">
+          <h3>Upload foto ke album ini</h3>
+          <div class="adm-field">
+            <label for="randomBerkas">Pilih foto (boleh banyak)</label>
+            <input type="file" id="randomBerkas" accept="image/jpeg,image/png,image/webp,image/heic,image/heif,.heic,.heif" multiple>
+          </div>
+          <div class="adm-field">
+            <label for="randomCaption">Keterangan untuk semua foto ini (boleh dikosongkan)</label>
+            <input type="text" id="randomCaption" maxlength="140" placeholder="Misal: momen study tour">
+          </div>
+          <button class="tombol" type="submit" id="tombolUnggahRandom">Upload foto</button>
+          <div class="adm-bar" id="barRandom" aria-hidden="true"><div></div></div>
+          <p class="status" id="statusUnggahRandom" role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="adm-baris adm-alat">
+          <button class="tombol tipis adm-kecil" type="button" id="pilihSemuaRandom">Pilih semua yang tampil</button>
+          <button class="tombol tipis adm-kecil adm-bahaya" type="button" id="hapusTerpilih" disabled>Hapus terpilih</button>
+        </div>
+        <ul class="adm-foto" id="galeriRandom"></ul>
+        <div class="adm-lagi" id="lagiRandom" hidden>
+          <button class="tombol tipis" type="button" id="muatRandom">Muat lebih banyak</button>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  <p>XII TJKT 1 &middot; SMKN 1 Pekanbaru &middot; 2025/2026</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/admin-config.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

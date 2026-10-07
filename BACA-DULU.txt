@@ -1,0 +1,24 @@
+CARA PAKAI WEB KENANGAN KELAS XII TJKT 1
+========================================
+
+1. FOTO (taruh di folder foto/)
+   - foto/fotbar.png         -> foto bersama untuk background beranda (otomatis dibuat samar)
+   - foto/wali-kelas.jpg     -> foto wali kelas
+   - foto/siswa/01.jpg ... 34.jpg -> foto tiap siswa (sesuai nomor urut/absen)
+   - foto/prestasi/mini-soccer.jpg -> foto prestasi (nama file sesuai data)
+   Kalau foto belum ada, web otomatis menampilkan inisial nama.
+   Tips: kecilkan ukuran foto (maks. sekitar 300 KB per foto) supaya web cepat.
+
+   - musik/01.mp3 ... 34.mp3 -> lagu favorit tiap siswa (nama file diatur di buat_web.py)
+
+2. ISI DATA (nama, quotes, pesan, prestasi)
+   Buka buat_web.py dengan Notepad/VS Code, edit bagian DATA di atas,
+   lalu jalankan:  python buat_web.py
+   Semua halaman HTML akan dibuat ulang.
+   (Kalau tidak ada Python, kamu bisa edit langsung file .html-nya satu per satu.)
+
+3. LIHAT HASIL
+   Buka index.html di browser.
+
+4. ONLINE (gratis)
+   Upload seluruh folder ke Netlify Drop (app.netlify.com/drop), GitHub Pages, atau Cloudflare Pages.

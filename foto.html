@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>XII TJKT 1 SMKN 1 Pekanbaru</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html">XII TJKT 1</a>
+  <nav>
+<a href="index.html">Beranda</a>
+<a href="struktur.html">Struktur<span class="panjang"> Kelas</span></a>
+<a href="wali-kelas.html">Wali<span class="panjang"> Kelas</span></a>
+<a href="siswa.html">Siswa</a>
+<a href="prestasi.html">Prestasi</a>
+<a href="foto.html" aria-current="page">Foto</a>
+  </nav>
+</header>
+
+<main class="isi">
+  <h1>Foto</h1>
+  <p class="lead">Pilih album untuk melihat, download dan upload foto kalian</p>
+
+  <ul class="pilih-album" aria-label="Pilih album">
+    <li><a href="foto-1.html"><strong>Family</strong><span>Lihat foto</span></a></li>
+    <li><a href="foto-2.html"><strong>Random 1</strong><span>Lihat foto</span></a></li>
+    <li><a href="foto-3.html"><strong>Random 2</strong><span>Lihat foto</span></a></li>
+    <li><a href="foto-4.html"><strong>Random 3</strong><span>Lihat foto</span></a></li>
+  </ul>
+
+  <section class="upload-box" id="upload">
+    <h2>Upload foto</h2>
+    <p class="ket">Foto langsung tampil di album yang kamu pilih. Bisa upload banyak foto sekaligus</p>
+    <form id="formUpload">
+      <fieldset class="field">
+        <legend>Masuk ke album</legend>
+        <div class="opsi-album">
+          <label><input type="radio" name="album" value="2" checked><span>Random 1</span></label>
+          <label><input type="radio" name="album" value="3"><span>Random 2</span></label>
+          <label><input type="radio" name="album" value="4"><span>Random 3</span></label>
+        </div>
+      </fieldset>
+      <div class="field">
+        <span class="judul">Upload Foto</span>
+        <label class="dropzone" id="dropzone">
+          <input type="file" id="berkasFoto" accept="image/*,.heic,.heif" multiple>
+          <strong>Drag foto ke sini</strong>
+          <span>atau klik / ketuk untuk memilih banyak foto sekaligus</span>
+        </label>
+        <div class="baris-pilihan">
+          <p class="jumlah-pilihan" id="jumlahPilihan" aria-live="polite"></p>
+          <button class="teks-tombol" type="button" id="kosongkan" hidden>Kosongkan pilihan</button>
+        </div>
+        <ul class="pratinjau" id="pratinjau" aria-label="Foto yang akan diupload"></ul>
+      </div>
+      <div class="field">
+        <label class="judul" for="caption">Keterangan untuk semua foto ini (boleh dikosongkan)</label>
+        <input type="text" id="caption" maxlength="140" placeholder="Misal : Rezki love Ghandi">
+      </div>
+      <button class="tombol penuh-hp" type="submit" id="tombolUpload">Upload foto</button>
+      <div class="bar-progres" id="bar" aria-hidden="true"><div></div></div>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+      <a class="tombol tipis" id="lihatAlbum" href="foto-2.html" hidden>Lihat album</a>
+    </form>
+  </section>
+</main>
+
+<footer class="footer">
+  <p>XII TJKT 1 &middot; SMKN 1 Pekanbaru &middot; 2025/2026</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/foto.js"></script>
+</body>
+</html>

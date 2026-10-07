@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>XII TJKT 1 SMKN 1 Pekanbaru</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-album="2">
+<header class="topbar">
+  <a class="brand" href="index.html">XII TJKT 1</a>
+  <nav>
+<a href="index.html">Beranda</a>
+<a href="struktur.html">Struktur<span class="panjang"> Kelas</span></a>
+<a href="wali-kelas.html">Wali<span class="panjang"> Kelas</span></a>
+<a href="siswa.html">Siswa</a>
+<a href="prestasi.html">Prestasi</a>
+<a href="foto.html" aria-current="page">Foto</a>
+  </nav>
+</header>
+
+<main class="isi">
+  <div class="atas-galeri">
+    <h1>Random 1</h1>
+    <a class="tombol" href="foto.html?album=2#upload">Upload foto</a>
+  </div>
+  <ul class="tab-album" aria-label="Pindah album">
+    <li><a href="foto-1.html">Family</a></li>
+    <li><a href="foto-2.html" aria-current="page">Random 1</a></li>
+    <li><a href="foto-3.html">Random 2</a></li>
+    <li><a href="foto-4.html">Random 3</a></li>
+  </ul>
+
+  <ul class="galeri" id="galeri"></ul>
+  <p class="status" id="infoGaleri" role="status" aria-live="polite"></p>
+  <div class="muat-lagi" hidden><button class="tombol tipis" type="button" id="muatLagi">Muat lebih banyak</button></div>
+
+  <dialog class="lightbox" id="lightbox" aria-label="Foto ukuran besar">
+    <div class="polaroid-besar">
+      <img id="lightboxGambar" alt="">
+      <p class="polaroid-teks" id="lightboxTeks"></p>
+      <p class="polaroid-tgl" id="lightboxTgl"></p>
+      <div class="lightbox-aksi">
+        <a class="tombol" id="unduhFoto" href="#">Unduh foto</a>
+        <button class="tombol tipis" type="button" id="tutupLightbox">Tutup</button>
+      </div>
+    </div>
+  </dialog>
+</main>
+
+<footer class="footer">
+  <p>XII TJKT 1 &middot; SMKN 1 Pekanbaru &middot; 2025/2026</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/foto.js"></script>
+</body>
+</html>
